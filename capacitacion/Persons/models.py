@@ -1,11 +1,24 @@
 from django.db import models
-from Country.models import Country
+
 
 class Person(models.Model):
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    """Person [summary]
+
+    Args:
+        models ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """
+    country = models.ForeignKey("Country.Country", on_delete=models.CASCADE)
     name = models.CharField(max_length=120)
     age = models.IntegerField()
     is_active = models.BooleanField(default=True)
-    
+
     def __str__(self):
-        return name
+        """__str__ [summary]
+
+        Returns:
+            [type]: [description]
+        """
+        return self.name
